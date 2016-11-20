@@ -13,7 +13,7 @@ $wordMachine->setLanguage('ru');
 
 $rate = $wordMachine->rate();
 if ($rate > WordMachine::WRONG_TEXT_THRESHOLD) {
-    echo "\033[31m " . $wordMachine->rate() . "\033[0m hey :-( this text seems incorrect \n";
+    echo "\033[31m " . $rate . "\033[0m hey :-( this text seems incorrect \n";
 } else {
-    echo "\033[32m " . $wordMachine->rate() . "\033[0m text is correct in many forms \n";
+    echo "\033[32m " . $rate . "\033[0m text is correct in many forms \n";
 }
