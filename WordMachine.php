@@ -2,6 +2,8 @@
 
 class WordMachine
 {
+    const WRONG_TEXT_THRESHOLD = 100;
+
     private $string;
     private $language;
     private $stringLength;
@@ -51,7 +53,7 @@ class WordMachine
         }
         else
         {
-//            return pow($cnt * $wordLen, log($subFactor * Learning::POWER));
+            // worst case 1 * 1 pow of 2.72 - when word length and frequency = 1
             return pow($cnt * $wordLen, Learning::POWER);
         }
     }

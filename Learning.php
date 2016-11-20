@@ -6,7 +6,7 @@ class Learning extends Model
 {
     const UTF_8  = 'utf-8';
     const FACTOR = 1.62; // golden ratio
-    const POWER  = 2.7;
+    const POWER  = 2.72; // exponent
 
     private $string;
     private $language;
