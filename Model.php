@@ -9,7 +9,7 @@ use PDO;
  */
 class Model
 {
-    protected $dbConn, $dbConnObject;
+    public $dbConn, $dbConnObject;
 
     public function __construct($conn)
     {
@@ -25,7 +25,7 @@ class Model
      *
      * @return int             affected rows
      */
-    protected function executeQuery($sql, $params)
+    public function executeQuery($sql, $params)
     {
         $stmt = $this->dbConn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $stmt->execute($params);
@@ -41,7 +41,7 @@ class Model
      *
      * @return int            PSOStatement object
      */
-    protected function executeQueryStmt($sql, $params)
+    public function executeQueryStmt($sql, $params)
     {
         $stmt = $this->dbConn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $stmt->execute($params);
@@ -56,7 +56,7 @@ class Model
      *
      * @return int affected rows
      */
-    protected function execQuery($sql)
+    public function execQuery($sql)
     {
         return $this->dbConn->exec($sql);
     }
@@ -69,7 +69,7 @@ class Model
      *
      * @return int            last insert ID
      */
-    protected function executeQueryLid($sql, $params)
+    public function executeQueryLid($sql, $params)
     {
         $stmt = $this->dbConn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $stmt->execute($params);
@@ -88,7 +88,7 @@ class Model
      *
      * @return int          last insert ID
      */
-    protected function execQueryLid($sql)
+    public function execQueryLid($sql)
     {
         if($this->dbConn->exec($sql) > 0)
         {
@@ -106,7 +106,7 @@ class Model
      *
      * @return array           1 row result
      */
-    protected function query($sql, $params = [])
+    public function query($sql, $params = [])
     {
         $stmt = $this->dbConn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $stmt->execute($params);
@@ -122,7 +122,7 @@ class Model
      *
      * @return array           multiple rows result
      */
-    protected function queryAll($sql, $params = [])
+    public function queryAll($sql, $params = [])
     {
         $stmt = $this->dbConn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $stmt->execute($params);
@@ -138,7 +138,7 @@ class Model
      *
      * @return string          value of a column
      */
-    protected function fetchColumn($sql, $params = [])
+    public function fetchColumn($sql, $params = [])
     {
         $stmt = $this->dbConn->prepare($sql, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
         $stmt->execute($params);
@@ -153,7 +153,7 @@ class Model
      *
      * @return mixed
      */
-    protected function mysqliQuery($sql)
+    public function mysqliQuery($sql)
     {
         return mysqli_query($this->dbConn, $sql);
     }
@@ -163,7 +163,7 @@ class Model
      *
      * @param Connector $conn particular Connector implementation
      */
-    protected function setDbConnection($conn)
+    public function setDbConnection($conn)
     {
         $this->dbConn = $conn;
     }

@@ -24,7 +24,6 @@ class Learning extends Model
 
     public function save()
     {
-        $t        = time();
         $arr      = explode(' ', $this->string);
         $arrCount = array_count_values($arr);
 
@@ -35,13 +34,12 @@ class Learning extends Model
                mb_strlen($trimmedWord, self::UTF_8) >= self::$languages[$this->language]
             )
             {
-                $sql = 'INSERT INTO vocabulary SET `word` = ?, `count` = ?, `lang` = ?, updated_at = ?';
+                $sql = 'INSERT INTO vocabulary SET `word` = ?, `count` = ?, `lang` = ?';
                 $this->executeQuery(
                     $sql, [
                         $trimmedWord,
                         $cnt,
                         $this->language,
-                        $t
                     ]
                 );
             }
